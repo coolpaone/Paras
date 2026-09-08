@@ -1,13 +1,9 @@
 import { useState, FormEvent } from 'react';
-import { Mail, MapPin, Home, Send, Check, Copy, CheckCircle2, AlertCircle, FileText } from 'lucide-react';
+import { Mail, MapPin, Home, Send, Check, Copy, CheckCircle2, AlertCircle, Camera, Globe, ExternalLink } from 'lucide-react';
 import { profileData } from '../data/cvData';
 import { ContactFormData } from '../types';
 
-interface ContactProps {
-  onOpenCvModal: () => void;
-}
-
-export default function Contact({ onOpenCvModal }: ContactProps) {
+export default function Contact() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     company: '',
@@ -18,12 +14,19 @@ export default function Contact({ onOpenCvModal }: ContactProps) {
 
   const [submitted, setSubmitted] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedWebsite, setCopiedWebsite] = useState(false);
   const [copiedDraft, setCopiedDraft] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(profileData.email);
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
+  };
+
+  const handleCopyWebsite = () => {
+    navigator.clipboard.writeText('www.parasnepali.com.np');
+    setCopiedWebsite(true);
+    setTimeout(() => setCopiedWebsite(false), 2000);
   };
 
   const handleCopyDraft = () => {
@@ -99,6 +102,38 @@ export default function Contact({ onOpenCvModal }: ContactProps) {
                 </button>
               </div>
 
+              {/* Official Website Card */}
+              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 hover:border-sky-500 transition-colors group flex items-center justify-between">
+                <a
+                  href="https://www.parasnepali.com.np"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 flex-1 min-w-0"
+                  id="contact-website-link"
+                >
+                  <div className="w-12 h-12 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center flex-shrink-0 group-hover:bg-sky-500 group-hover:text-white transition-colors">
+                    <Globe className="w-5 h-5" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-xs uppercase font-semibold text-slate-400 flex items-center gap-1.5">
+                      Official Website
+                      <ExternalLink className="w-3 h-3 text-sky-400" />
+                    </div>
+                    <div className="text-white font-mono text-sm sm:text-base font-semibold group-hover:text-sky-300 transition-colors truncate">
+                      www.parasnepali.com.np
+                    </div>
+                  </div>
+                </a>
+                <button
+                  type="button"
+                  onClick={handleCopyWebsite}
+                  className="p-2 rounded-lg bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 transition-colors ml-2"
+                  title="Copy website URL"
+                >
+                  {copiedWebsite ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                </button>
+              </div>
+
               {/* Current Location Card */}
               <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 flex items-center gap-4">
                 <div className="w-12 h-12 rounded-lg bg-slate-800 text-sky-400 flex items-center justify-center flex-shrink-0">
@@ -121,19 +156,18 @@ export default function Contact({ onOpenCvModal }: ContactProps) {
                 </div>
               </div>
 
-              {/* Verification & Document link */}
+              {/* Photo Showcase Link */}
               <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <FileText className="w-5 h-5 text-sky-400" />
-                  <span className="text-xs text-slate-300">Verified Physical Document</span>
+                  <Camera className="w-5 h-5 text-sky-400" />
+                  <span className="text-xs text-slate-300">Official Profile Showcase</span>
                 </div>
-                <button
-                  type="button"
-                  onClick={onOpenCvModal}
+                <a
+                  href="#gallery"
                   className="text-xs text-sky-400 hover:text-sky-300 font-semibold underline underline-offset-4 cursor-pointer"
                 >
-                  Inspect Scanned CV
-                </button>
+                  View 4 Profile Photos
+                </a>
               </div>
             </div>
           </div>

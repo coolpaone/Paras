@@ -1,14 +1,18 @@
 import { useState, MouseEvent } from 'react';
-import { Mail, ChevronDown, CheckCircle2, MapPin, Home, Copy, Check, FileSearch, Sparkles } from 'lucide-react';
+import { Mail, ChevronDown, CheckCircle2, MapPin, Home, Copy, Check, Camera, Globe, ExternalLink } from 'lucide-react';
 import { profileData } from '../data/cvData';
 
 interface HeroProps {
-  onOpenCvModal: () => void;
+  avatarUrl?: string;
+  onOpenPhotoManager?: () => void;
 }
 
-export default function Hero({ onOpenCvModal }: HeroProps) {
+export default function Hero({ avatarUrl, onOpenPhotoManager }: HeroProps) {
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedWebsite, setCopiedWebsite] = useState(false);
   const [imageError, setImageError] = useState(false);
+
+  const currentAvatar = avatarUrl || profileData.avatarCropUrl;
 
   const handleCopyEmail = (e: MouseEvent) => {
     e.preventDefault();
@@ -16,6 +20,14 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
     navigator.clipboard.writeText(profileData.email);
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2200);
+  };
+
+  const handleCopyWebsite = (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigator.clipboard.writeText('www.parasnepali.com.np');
+    setCopiedWebsite(true);
+    setTimeout(() => setCopiedWebsite(false), 2200);
   };
 
   const handleScrollTo = (id: string) => {
@@ -82,43 +94,43 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
 
               <button
                 type="button"
-                onClick={() => handleScrollTo('experience')}
-                className="px-7 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-sm border border-slate-800 hover:border-slate-700 transition-all flex items-center gap-2 cursor-pointer"
-                id="hero-history-btn"
+                onClick={() => handleScrollTo('gallery')}
+                className="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-sky-400 hover:text-white font-semibold text-sm border border-sky-500/30 hover:border-sky-500/60 transition-all flex items-center gap-2 cursor-pointer"
+                id="hero-gallery-btn"
               >
-                <span>View Career History</span>
-                <ChevronDown className="w-4 h-4 text-sky-400" />
+                <Camera className="w-4 h-4" />
+                <span>View Photo Gallery</span>
               </button>
 
               <button
                 type="button"
-                onClick={onOpenCvModal}
-                className="px-4 py-3 rounded-xl bg-slate-900/60 hover:bg-slate-800 text-slate-300 hover:text-white font-medium text-xs border border-slate-800/80 flex items-center gap-1.5 cursor-pointer"
-                id="hero-view-cv-doc"
+                onClick={() => handleScrollTo('experience')}
+                className="px-6 py-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-300 font-semibold text-sm border border-slate-800 hover:border-slate-700 transition-all flex items-center gap-2 cursor-pointer"
+                id="hero-history-btn"
               >
-                <FileSearch className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Original CV Document</span>
+                <span>Career History</span>
+                <ChevronDown className="w-4 h-4 text-slate-400" />
               </button>
             </div>
           </div>
 
-          {/* Right Column: CV Profile Visual Representation */}
+          {/* Right Column: Profile Picture & Professional Identity */}
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-md">
               {/* Decorative border glow */}
               <div className="absolute -inset-1.5 bg-gradient-to-r from-sky-600 to-cyan-500 rounded-3xl blur-xl opacity-25"></div>
 
               <div className="relative bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 text-center cv-card-shadow">
-                {/* Avatar Display using authentic CV source image crop */}
-                <div className="relative w-40 h-40 mx-auto rounded-full p-1.5 bg-gradient-to-tr from-sky-600 via-cyan-400 to-slate-700 shadow-xl overflow-hidden mb-5 group">
+                {/* Official Profile Picture */}
+                <div className="relative w-44 h-44 mx-auto rounded-full p-1.5 bg-gradient-to-tr from-sky-600 via-cyan-400 to-slate-700 shadow-2xl overflow-hidden mb-5 group">
                   <div className="w-full h-full rounded-full overflow-hidden bg-slate-800 relative">
                     {!imageError ? (
                       <img
-                        alt="Paras Nepali - Security Guard"
+                        alt="Paras Nepali - Professional Security Guard"
                         referrerPolicy="no-referrer"
                         onError={() => setImageError(true)}
-                        className="w-full h-full object-cover object-[20%_8%] scale-[2.2] transform origin-top-left translate-x-[-15%] translate-y-[-2%] transition-transform duration-500 group-hover:scale-[2.35]"
-                        src={profileData.avatarCropUrl}
+                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        src={currentAvatar}
                       />
                     ) : (
                       <div className="w-full h-full flex flex-col items-center justify-center bg-slate-800 text-sky-400">
@@ -127,25 +139,61 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
                       </div>
                     )}
                   </div>
-                  {/* Subtle quick click overlay to view CV */}
+                  {/* Quick click overlay */}
                   <button
                     type="button"
-                    onClick={onOpenCvModal}
-                    title="Click to view verified CV document"
-                    className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-full text-xs font-semibold text-white backdrop-blur-[2px]"
+                    onClick={() => {
+                      if (onOpenPhotoManager) {
+                        onOpenPhotoManager();
+                      } else {
+                        handleScrollTo('gallery');
+                      }
+                    }}
+                    title="Click to view photos or customize"
+                    className="absolute inset-0 bg-slate-950/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-full text-xs font-semibold text-white backdrop-blur-[2px] cursor-pointer"
                   >
-                    <span className="bg-slate-900/90 px-2.5 py-1 rounded-full border border-sky-400/40 text-[11px] flex items-center gap-1 shadow">
-                      <Sparkles className="w-3 h-3 text-cyan-300" /> View CV
+                    <span className="bg-slate-900/90 px-3 py-1.5 rounded-full border border-sky-400/40 text-[11px] flex items-center gap-1.5 shadow">
+                      <Camera className="w-3.5 h-3.5 text-cyan-300" /> View Photos
                     </span>
                   </button>
                 </div>
 
                 {/* Profile Details */}
                 <h2 className="text-2xl font-bold text-white tracking-tight">Paras Nepali</h2>
-                <p className="text-sky-400 font-medium text-sm mt-1">Professional Security Guard</p>
+                <p className="text-sky-400 font-medium text-sm mt-1">Professional Security Guard • UAE</p>
 
                 {/* Verified Contact Items */}
                 <div className="mt-6 pt-6 border-t border-slate-800/80 space-y-3 text-left text-sm">
+                  {/* Official Website */}
+                  <div className="flex items-center justify-between gap-3 text-slate-300 bg-slate-950/50 p-2.5 rounded-xl border border-slate-800/60 group/item">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="w-8 h-8 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-400 flex-shrink-0">
+                        <Globe className="w-4 h-4" />
+                      </div>
+                      <a
+                        href="https://www.parasnepali.com.np"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-sky-400 transition-colors truncate font-mono text-xs sm:text-sm font-semibold text-sky-300 flex items-center gap-1"
+                      >
+                        <span>www.parasnepali.com.np</span>
+                        <ExternalLink className="w-3 h-3 text-sky-400 opacity-70" />
+                      </a>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={handleCopyWebsite}
+                      className="p-1.5 rounded-md hover:bg-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer"
+                      title="Copy website address"
+                    >
+                      {copiedWebsite ? (
+                        <Check className="w-4 h-4 text-emerald-400" />
+                      ) : (
+                        <Copy className="w-4 h-4" />
+                      )}
+                    </button>
+                  </div>
+
                   {/* Email with copy button */}
                   <div className="flex items-center justify-between gap-3 text-slate-300 bg-slate-950/50 p-2.5 rounded-xl border border-slate-800/60 group/item">
                     <div className="flex items-center gap-3 min-w-0">
@@ -162,7 +210,7 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
                     <button
                       type="button"
                       onClick={handleCopyEmail}
-                      className="p-1.5 rounded-md hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
+                      className="p-1.5 rounded-md hover:bg-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer"
                       title="Copy email to clipboard"
                     >
                       {copiedEmail ? (
@@ -200,18 +248,18 @@ export default function Hero({ onOpenCvModal }: HeroProps) {
                   </div>
                 </div>
 
-                {/* Verification badge & View CV trigger */}
+                {/* Verification badge & Gallery trigger */}
                 <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-medium text-slate-400">
                   <div className="flex items-center gap-1.5 text-emerald-400 font-semibold">
                     <CheckCircle2 className="w-4 h-4" />
-                    <span>Verified CV Information</span>
+                    <span>Verified Professional Profile</span>
                   </div>
                   <button
                     type="button"
-                    onClick={onOpenCvModal}
-                    className="text-sky-400 hover:text-sky-300 underline underline-offset-4 cursor-pointer"
+                    onClick={() => handleScrollTo('gallery')}
+                    className="text-sky-400 hover:text-sky-300 underline underline-offset-4 cursor-pointer flex items-center gap-1"
                   >
-                    Inspect Document
+                    <span>4 Photos</span>
                   </button>
                 </div>
               </div>

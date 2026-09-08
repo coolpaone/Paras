@@ -23,11 +23,20 @@ export default function Footer() {
         {/* Verification statement */}
         <div className="text-center text-slate-400 flex items-center gap-1.5">
           <Shield className="w-3.5 h-3.5 text-sky-400 inline" />
-          <span>Authentic CV Profile Representation • Verified Documentation</span>
+          <span>Professional Security Portfolio • Verified Dubai &amp; UAE Presence</span>
         </div>
 
         {/* Contact info & back to top */}
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-4">
+          <a
+            href="https://www.parasnepali.com.np"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-sky-400 transition-colors font-mono text-sky-400 font-medium"
+          >
+            www.parasnepali.com.np
+          </a>
+          <span>•</span>
           <a
             href={`mailto:${profileData.email}`}
             className="hover:text-sky-400 transition-colors font-mono text-slate-300"

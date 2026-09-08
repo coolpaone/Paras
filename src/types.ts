@@ -25,6 +25,16 @@ export interface LanguageItem {
   notes?: string;
 }
 
+export interface ProfilePhoto {
+  id: string;
+  url: string;
+  title: string;
+  category: string;
+  description: string;
+  locationTag: string;
+  featured?: boolean;
+}
+
 export interface ProfileData {
   name: string;
   title: string;
@@ -35,7 +45,8 @@ export interface ProfileData {
   availability: string;
   bio: string;
   avatarCropUrl: string;
-  fullCvImageUrl: string;
+  website?: string;
+  photos: ProfilePhoto[];
   stats: {
     label: string;
     sublabel: string;

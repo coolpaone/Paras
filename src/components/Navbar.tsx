@@ -1,12 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Mail, FileText, Menu, X, Shield, ArrowUpRight } from 'lucide-react';
+import { Mail, Camera, Menu, X, Shield, ArrowUpRight } from 'lucide-react';
 import { profileData } from '../data/cvData';
 
-interface NavbarProps {
-  onOpenCvModal: () => void;
-}
-
-export default function Navbar({ onOpenCvModal }: NavbarProps) {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -15,7 +11,7 @@ export default function Navbar({ onOpenCvModal }: NavbarProps) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = ['hero', 'about', 'experience', 'expertise', 'languages', 'contact'];
+      const sections = ['hero', 'about', 'gallery', 'experience', 'expertise', 'languages', 'contact'];
       const scrollPosition = window.scrollY + 120;
 
       for (const sectionId of sections) {
@@ -37,6 +33,7 @@ export default function Navbar({ onOpenCvModal }: NavbarProps) {
 
   const navLinks = [
     { label: 'Profile', href: '#about', id: 'about' },
+    { label: 'Photos', href: '#gallery', id: 'gallery' },
     { label: 'Experience', href: '#experience', id: 'experience' },
     { label: 'Expertise', href: '#expertise', id: 'expertise' },
     { label: 'Languages', href: '#languages', id: 'languages' },
@@ -111,16 +108,18 @@ export default function Navbar({ onOpenCvModal }: NavbarProps) {
 
         {/* Actions */}
         <div className="hidden sm:flex items-center gap-3">
-          <button
-            type="button"
-            onClick={onOpenCvModal}
+          <a
+            href="#gallery"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('#gallery');
+            }}
             className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white text-xs font-semibold border border-slate-800 hover:border-slate-700 transition-all cursor-pointer"
-            id="view-cv-doc-btn"
-            title="Inspect full original CV document"
+            id="view-gallery-btn"
           >
-            <FileText className="w-3.5 h-3.5 text-sky-400" />
-            <span>View CV Doc</span>
-          </button>
+            <Camera className="w-3.5 h-3.5 text-sky-400" />
+            <span>Profile Gallery</span>
+          </a>
 
           <a
             href={`mailto:${profileData.email}?subject=Security%20Role%20Inquiry%20for%20Paras%20Nepali`}
@@ -134,14 +133,17 @@ export default function Navbar({ onOpenCvModal }: NavbarProps) {
 
         {/* Mobile menu trigger */}
         <div className="flex md:hidden items-center gap-2">
-          <button
-            type="button"
-            onClick={onOpenCvModal}
+          <a
+            href="#gallery"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('#gallery');
+            }}
             className="p-2 rounded-lg bg-slate-900 text-slate-300 border border-slate-800 hover:text-white"
-            title="View CV"
+            title="View Photos"
           >
-            <FileText className="w-4 h-4 text-sky-400" />
-          </button>
+            <Camera className="w-4 h-4 text-sky-400" />
+          </a>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -178,17 +180,17 @@ export default function Navbar({ onOpenCvModal }: NavbarProps) {
           </div>
 
           <div className="pt-3 border-t border-slate-800/80 flex flex-col gap-2">
-            <button
-              type="button"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenCvModal();
+            <a
+              href="#gallery"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick('#gallery');
               }}
               className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-900 border border-slate-800 text-sm font-semibold text-slate-200"
             >
-              <FileText className="w-4 h-4 text-sky-400" />
-              <span>Inspect Original CV</span>
-            </button>
+              <Camera className="w-4 h-4 text-sky-400" />
+              <span>Browse Profile Photos</span>
+            </a>
             <a
               href={`mailto:${profileData.email}`}
               className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 text-sm font-semibold text-white shadow-md shadow-sky-600/30"
