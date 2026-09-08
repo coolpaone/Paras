@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Mail, Camera, Menu, X, Shield, ArrowUpRight } from 'lucide-react';
+import { Mail, Menu, X, Shield, ArrowUpRight } from 'lucide-react';
 import { profileData } from '../data/cvData';
 
 export default function Navbar() {
@@ -67,8 +67,19 @@ export default function Navbar() {
           className="flex items-center gap-3 group"
           id="nav-brand-link"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-700 via-sky-600 to-cyan-400 flex items-center justify-center font-bold text-white shadow-md shadow-sky-600/30 group-hover:scale-105 transition-transform duration-200 ring-1 ring-sky-400/30">
-            <span className="text-sm tracking-wider font-extrabold">PN</span>
+          <div className="w-10 h-10 rounded-xl overflow-hidden shadow-md shadow-sky-600/30 group-hover:scale-105 transition-transform duration-200 ring-2 ring-sky-400/40 bg-slate-800 flex-shrink-0">
+            <img
+              src="/paras-original-avatar.jpg"
+              alt="Paras Nepali"
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover object-top"
+              onError={(e) => {
+                const target = e.currentTarget;
+                if (!target.src.includes('/images/paras-original-avatar.jpg')) {
+                  target.src = '/images/paras-original-avatar.jpg';
+                }
+              }}
+            />
           </div>
           <div className="text-left">
             <span className="block font-bold tracking-tight text-white group-hover:text-sky-400 transition-colors text-sm sm:text-base">
@@ -109,19 +120,6 @@ export default function Navbar() {
         {/* Actions */}
         <div className="hidden sm:flex items-center gap-3">
           <a
-            href="#gallery"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('#gallery');
-            }}
-            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white text-xs font-semibold border border-slate-800 hover:border-slate-700 transition-all cursor-pointer"
-            id="view-gallery-btn"
-          >
-            <Camera className="w-3.5 h-3.5 text-sky-400" />
-            <span>Profile Gallery</span>
-          </a>
-
-          <a
             href={`mailto:${profileData.email}?subject=Security%20Role%20Inquiry%20for%20Paras%20Nepali`}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm shadow-sky-600/40 hover:shadow-md hover:shadow-sky-500/50"
             id="nav-email-btn"
@@ -133,17 +131,6 @@ export default function Navbar() {
 
         {/* Mobile menu trigger */}
         <div className="flex md:hidden items-center gap-2">
-          <a
-            href="#gallery"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick('#gallery');
-            }}
-            className="p-2 rounded-lg bg-slate-900 text-slate-300 border border-slate-800 hover:text-white"
-            title="View Photos"
-          >
-            <Camera className="w-4 h-4 text-sky-400" />
-          </a>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -180,17 +167,6 @@ export default function Navbar() {
           </div>
 
           <div className="pt-3 border-t border-slate-800/80 flex flex-col gap-2">
-            <a
-              href="#gallery"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick('#gallery');
-              }}
-              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-900 border border-slate-800 text-sm font-semibold text-slate-200"
-            >
-              <Camera className="w-4 h-4 text-sky-400" />
-              <span>Browse Profile Photos</span>
-            </a>
             <a
               href={`mailto:${profileData.email}`}
               className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 text-sm font-semibold text-white shadow-md shadow-sky-600/30"

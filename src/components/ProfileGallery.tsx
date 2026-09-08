@@ -9,9 +9,18 @@ interface ProfileGalleryProps {
 
 export default function ProfileGallery({ onSelectPhoto, photos = profileData.photos }: ProfileGalleryProps) {
   return (
-    <section className="py-12 sm:py-16 bg-slate-950/60 border-t border-slate-800/80" id="gallery">
+    <section className="py-16 sm:py-20 bg-slate-950/60 border-t border-slate-800/80" id="gallery">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Pure Visual Grid with Zero Text */}
+        {/* Gallery Section Header */}
+        <div className="max-w-3xl mb-8 sm:mb-12">
+          <div className="flex items-center gap-2 text-sky-400 font-semibold tracking-wider text-xs uppercase mb-2">
+            <span className="w-6 h-0.5 bg-sky-500"></span>
+            Visual Portfolio
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Gallery</h2>
+        </div>
+
+        {/* Four Photos Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {photos.map((photo) => (
             <div

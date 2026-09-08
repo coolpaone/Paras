@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react';
-import { Mail, MapPin, Home, Send, Check, Copy, CheckCircle2, AlertCircle, Camera, Globe, ExternalLink } from 'lucide-react';
+import { Mail, MapPin, Home, Send, Check, Copy, CheckCircle2, AlertCircle, Globe, ExternalLink } from 'lucide-react';
 import { profileData } from '../data/cvData';
 import { ContactFormData } from '../types';
 
@@ -154,20 +154,6 @@ export default function Contact() {
                   <div className="text-xs uppercase font-semibold text-slate-400">Permanent Address</div>
                   <div className="text-white font-medium text-sm sm:text-base">{profileData.permanentLocation}</div>
                 </div>
-              </div>
-
-              {/* Photo Showcase Link */}
-              <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <Camera className="w-5 h-5 text-sky-400" />
-                  <span className="text-xs text-slate-300">Official Profile Showcase</span>
-                </div>
-                <a
-                  href="#gallery"
-                  className="text-xs text-sky-400 hover:text-sky-300 font-semibold underline underline-offset-4 cursor-pointer"
-                >
-                  View 4 Profile Photos
-                </a>
               </div>
             </div>
           </div>

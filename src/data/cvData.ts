@@ -8,8 +8,9 @@ export const profileData: ProfileData = {
   permanentLocation: 'Gorkha, Nepal',
   yearsExperience: '5+ Years',
   availability: 'Available for Security & Hospitality Roles in UAE',
-  bio: 'Dedicated and vigilant Security Guard with over five years of proven experience in ensuring the safety and security of people and property across prestigious retail, hospitality, and corporate environments in the UAE. Skilled in surveillance, access control, emergency response, and conflict resolution, with additional experience in concierge services and customer support. Recognized for strong observation skills, professionalism, and effective communication, ensuring both security and a positive guest experience. Adept at working under pressure, maintaining accurate documentation, and upholding compliance with safety regulations.',
-  avatarCropUrl: '/images/paras-original-avatar.jpg',
+  bio: 'Dedicated Security Professional committed to protecting people, property, and communities through vigilance, discipline, integrity, and professionalism. With a positive attitude, strong sense of responsibility, and a global mindset, I believe security is about more than protection—it is about building trust, supporting people, and creating safe environments where communities can grow and thrive. I strive to contribute positively to every place I serve and to be part of a safer, more connected, and secure world.',
+  summaryStatement: 'I am committed to protecting people, supporting communities, and creating a safe and positive environment wherever I serve. With integrity, discipline, and a global mindset, I strive to make a meaningful contribution and connect with people through trust, respect, and professionalism.',
+  avatarCropUrl: '/paras-original-avatar.jpg',
   website: 'www.parasnepali.com.np',
   photos: [
     {
@@ -50,7 +51,7 @@ export const profileData: ProfileData = {
     },
   ],
   stats: [
-    { label: '5+ Years', sublabel: 'UAE Experience' },
+    { label: '5+ Years', sublabel: 'Experience' },
     { label: 'Dual Focus', sublabel: 'Safety & Guest Service' },
     { label: 'Trilingual', sublabel: 'Nepali, English, Hindi' },
   ],

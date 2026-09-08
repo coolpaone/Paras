@@ -1,18 +1,11 @@
 import { useState, MouseEvent } from 'react';
-import { Mail, ChevronDown, CheckCircle2, MapPin, Home, Copy, Check, Camera, Globe, ExternalLink } from 'lucide-react';
+import { Mail, ChevronDown, CheckCircle2, MapPin, Home, Copy, Check, Globe, ExternalLink } from 'lucide-react';
 import { profileData } from '../data/cvData';
 
-interface HeroProps {
-  avatarUrl?: string;
-  onOpenPhotoManager?: () => void;
-}
-
-export default function Hero({ avatarUrl, onOpenPhotoManager }: HeroProps) {
+export default function Hero() {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedWebsite, setCopiedWebsite] = useState(false);
-  const [imageError, setImageError] = useState(false);
-
-  const currentAvatar = avatarUrl || profileData.avatarCropUrl;
+  const [avatarSrc, setAvatarSrc] = useState(profileData.avatarCropUrl);
 
   const handleCopyEmail = (e: MouseEvent) => {
     e.preventDefault();
@@ -94,16 +87,6 @@ export default function Hero({ avatarUrl, onOpenPhotoManager }: HeroProps) {
 
               <button
                 type="button"
-                onClick={() => handleScrollTo('gallery')}
-                className="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-sky-400 hover:text-white font-semibold text-sm border border-sky-500/30 hover:border-sky-500/60 transition-all flex items-center gap-2 cursor-pointer"
-                id="hero-gallery-btn"
-              >
-                <Camera className="w-4 h-4" />
-                <span>View Photo Gallery</span>
-              </button>
-
-              <button
-                type="button"
                 onClick={() => handleScrollTo('experience')}
                 className="px-6 py-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-300 font-semibold text-sm border border-slate-800 hover:border-slate-700 transition-all flex items-center gap-2 cursor-pointer"
                 id="hero-history-btn"
@@ -122,40 +105,22 @@ export default function Hero({ avatarUrl, onOpenPhotoManager }: HeroProps) {
 
               <div className="relative bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 text-center cv-card-shadow">
                 {/* Official Profile Picture */}
-                <div className="relative w-44 h-44 mx-auto rounded-full p-1.5 bg-gradient-to-tr from-sky-600 via-cyan-400 to-slate-700 shadow-2xl overflow-hidden mb-5 group">
-                  <div className="w-full h-full rounded-full overflow-hidden bg-slate-800 relative">
-                    {!imageError ? (
-                      <img
-                        alt="Paras Nepali - Professional Security Guard"
-                        referrerPolicy="no-referrer"
-                        onError={() => setImageError(true)}
-                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                        src={currentAvatar}
-                      />
-                    ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center bg-slate-800 text-sky-400">
-                        <span className="text-3xl font-extrabold">PN</span>
-                        <span className="text-[10px] text-slate-400 uppercase mt-1">Verified Profile</span>
-                      </div>
-                    )}
+                <div className="relative w-44 h-44 mx-auto rounded-full p-1.5 bg-gradient-to-tr from-sky-600 via-cyan-400 to-slate-700 shadow-2xl overflow-hidden mb-5">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-slate-800 relative shadow-inner">
+                    <img
+                      alt="Paras Nepali - Professional Security Guard"
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover object-top"
+                      src={avatarSrc}
+                      onError={() => {
+                        if (avatarSrc !== '/paras-original-avatar.jpg') {
+                          setAvatarSrc('/paras-original-avatar.jpg');
+                        } else {
+                          setAvatarSrc('/images/paras-original-avatar.jpg');
+                        }
+                      }}
+                    />
                   </div>
-                  {/* Quick click overlay */}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (onOpenPhotoManager) {
-                        onOpenPhotoManager();
-                      } else {
-                        handleScrollTo('gallery');
-                      }
-                    }}
-                    title="Click to view photos or customize"
-                    className="absolute inset-0 bg-slate-950/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-full text-xs font-semibold text-white backdrop-blur-[2px] cursor-pointer"
-                  >
-                    <span className="bg-slate-900/90 px-3 py-1.5 rounded-full border border-sky-400/40 text-[11px] flex items-center gap-1.5 shadow">
-                      <Camera className="w-3.5 h-3.5 text-cyan-300" /> View Photos
-                    </span>
-                  </button>
                 </div>
 
                 {/* Profile Details */}
@@ -248,19 +213,12 @@ export default function Hero({ avatarUrl, onOpenPhotoManager }: HeroProps) {
                   </div>
                 </div>
 
-                {/* Verification badge & Gallery trigger */}
-                <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-medium text-slate-400">
+                {/* Verification badge */}
+                <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-center text-xs font-medium text-slate-400">
                   <div className="flex items-center gap-1.5 text-emerald-400 font-semibold">
                     <CheckCircle2 className="w-4 h-4" />
                     <span>Verified Professional Profile</span>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => handleScrollTo('gallery')}
-                    className="text-sky-400 hover:text-sky-300 underline underline-offset-4 cursor-pointer flex items-center gap-1"
-                  >
-                    <span>4 Photos</span>
-                  </button>
                 </div>
               </div>
             </div>

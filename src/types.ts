@@ -44,6 +44,7 @@ export interface ProfileData {
   yearsExperience: string;
   availability: string;
   bio: string;
+  summaryStatement?: string;
   avatarCropUrl: string;
   website?: string;
   photos: ProfilePhoto[];
