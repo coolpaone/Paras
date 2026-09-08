@@ -40,15 +40,6 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Bio & Value Proposition */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-            {/* Availability Pill */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-xs font-medium text-sky-400 shadow-inner">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-              </span>
-              <span>{profileData.availability}</span>
-            </div>
-
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
               {profileData.name}
               <span className="block text-2xl sm:text-3xl lg:text-4xl font-semibold text-sky-400 mt-2">
@@ -125,7 +116,7 @@ export default function Hero() {
 
                 {/* Profile Details */}
                 <h2 className="text-2xl font-bold text-white tracking-tight">Paras Nepali</h2>
-                <p className="text-sky-400 font-medium text-sm mt-1">Professional Security Guard • UAE</p>
+                <p className="text-sky-400 font-medium text-sm mt-1">Professional Security Guard</p>
 
                 {/* Verified Contact Items */}
                 <div className="mt-6 pt-6 border-t border-slate-800/80 space-y-3 text-left text-sm">

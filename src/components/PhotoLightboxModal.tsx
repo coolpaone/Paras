@@ -83,8 +83,22 @@ export default function PhotoLightboxModal({
         <div className="relative flex-1 bg-slate-950 flex items-center justify-center min-h-[350px] max-h-[75vh] overflow-hidden p-2 sm:p-4">
           <img
             src={photo.url}
-            alt="Profile photo preview"
+            alt={photo.title || 'Profile photo preview'}
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (target.src.includes('Paras-1.jpg')) {
+                target.src = '/images/FB_IMG_1788850092856.jpg';
+              } else if (target.src.includes('Paras-2.jpg')) {
+                target.src = '/images/FB_IMG_1788849989523.jpg';
+              } else if (target.src.includes('Paras-3.jpg')) {
+                target.src = '/images/FB_IMG_1788850013362.jpg';
+              } else if (target.src.includes('Paras-4.jpg')) {
+                target.src = '/images/FB_IMG_1788850023339.jpg';
+              } else if (target.src.includes('paras-original-avatar.jpg')) {
+                target.src = '/paras-original-avatar.jpg';
+              }
+            }}
             className="max-h-[72vh] max-w-full w-auto object-contain rounded-lg shadow-2xl"
           />
 
