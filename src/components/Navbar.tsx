@@ -69,14 +69,16 @@ export default function Navbar() {
         >
           <div className="w-10 h-10 rounded-xl overflow-hidden shadow-md shadow-sky-600/30 group-hover:scale-105 transition-transform duration-200 ring-2 ring-sky-400/40 bg-slate-800 flex-shrink-0">
             <img
-              src="/paras-original-avatar.jpg"
+              src="/Paras Profile Pic.jpg"
               alt="Paras Nepali"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-top"
               onError={(e) => {
                 const target = e.currentTarget;
-                if (!target.src.includes('/images/paras-original-avatar.jpg')) {
-                  target.src = '/images/paras-original-avatar.jpg';
+                if (!target.src.includes('/images/Paras Profile Pic.jpg') && !target.src.includes('paras-original-avatar')) {
+                  target.src = '/images/Paras Profile Pic.jpg';
+                } else {
+                  target.src = '/paras-original-avatar.jpg';
                 }
               }}
             />

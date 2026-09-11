@@ -70,7 +70,7 @@ export default function Contact() {
               </div>
               <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Contact Paras Nepali</h2>
               <p className="text-slate-400 text-sm mt-3 leading-relaxed">
-                Seeking reliable, experienced, and vigilant security personnel in Dubai or across the United Arab Emirates? Reach out directly via email.
+                Reach out directly via email.
               </p>
             </div>
 

@@ -104,10 +104,12 @@ export default function Hero() {
                       className="w-full h-full object-cover object-top"
                       src={avatarSrc}
                       onError={() => {
-                        if (avatarSrc !== '/paras-original-avatar.jpg') {
-                          setAvatarSrc('/paras-original-avatar.jpg');
+                        if (avatarSrc !== '/Paras Profile Pic.jpg' && avatarSrc !== '/images/Paras Profile Pic.jpg') {
+                          setAvatarSrc('/Paras Profile Pic.jpg');
+                        } else if (avatarSrc === '/Paras Profile Pic.jpg') {
+                          setAvatarSrc('/images/Paras Profile Pic.jpg');
                         } else {
-                          setAvatarSrc('/images/paras-original-avatar.jpg');
+                          setAvatarSrc('/paras-original-avatar.jpg');
                         }
                       }}
                     />

@@ -29,23 +29,23 @@ export default function ProfileGallery({ onSelectPhoto, photos = profileData.pho
   const fileInputRef2 = useRef<HTMLInputElement>(null);
 
   const getFallbacks = (id: string, url: string): string[] => {
-    if (id === 'photo-formal-id') {
-      return ['/paras-original-avatar.jpg', '/images/paras-original-avatar.jpg'];
+    if (id === 'paras-profile-pic' || id === 'photo-formal-id') {
+      return ['/Paras Profile Pic.jpg', '/images/Paras Profile Pic.jpg', '/paras-original-avatar.jpg', '/images/paras-original-avatar.jpg'];
     }
-    if (id === 'photo-retail-uniform') {
-      return ['/images/Paras-1.jpg', '/Paras-1.jpg', '/images/Paras (1).jpg', '/images/FB_IMG_1788850092856.jpg', '/FB_IMG_1788850092856.jpg'];
+    if (id === 'paras-1' || id === 'photo-retail-uniform') {
+      return ['/Paras (1).jpg', '/images/Paras (1).jpg', '/Paras-1.jpg', '/images/Paras-1.jpg', '/FB_IMG_1788850092856.jpg', '/images/FB_IMG_1788850092856.jpg'];
     }
-    if (id === 'photo-burj-skyline') {
-      return ['/images/Paras-2.jpg', '/Paras-2.jpg', '/images/Paras (2).jpg', '/images/FB_IMG_1788849989523.jpg', '/FB_IMG_1788849989523.jpg'];
+    if (id === 'paras-2' || id === 'photo-burj-skyline') {
+      return ['/Paras (2).jpg', '/images/Paras (2).jpg', '/Paras-2.jpg', '/images/Paras-2.jpg', '/FB_IMG_1788849989523.jpg', '/images/FB_IMG_1788849989523.jpg'];
     }
-    if (id === 'photo-marble-lobby') {
-      return ['/images/Paras-3.jpg', '/Paras-3.jpg', '/images/Paras (3).jpg', '/images/FB_IMG_1788850013362.jpg', '/FB_IMG_1788850013362.jpg'];
+    if (id === 'paras-3' || id === 'photo-marble-lobby') {
+      return ['/Paras (3).jpg', '/images/Paras (3).jpg', '/Paras-3.jpg', '/images/Paras-3.jpg', '/FB_IMG_1788850013362.jpg', '/images/FB_IMG_1788850013362.jpg'];
     }
-    if (id === 'photo-casual-profile') {
-      return ['/images/Paras-4.jpg', '/Paras-4.jpg', '/images/Paras (4).jpg', '/images/FB_IMG_1788850023339.jpg', '/FB_IMG_1788850023339.jpg'];
+    if (id === 'paras-4' || id === 'photo-casual-profile') {
+      return ['/Paras (4).jpg', '/images/Paras (4).jpg', '/Paras-4.jpg', '/images/Paras-4.jpg', '/FB_IMG_1788850023339.jpg', '/images/FB_IMG_1788850023339.jpg'];
     }
-    if (id === 'photo-executive-portrait') {
-      return ['/images/Paras.png', '/Paras.png'];
+    if (id === 'paras-street' || id === 'photo-executive-portrait') {
+      return ['/Paras.jpg', '/images/Paras.jpg'];
     }
     return [url];
   };

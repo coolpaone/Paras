@@ -15,15 +15,15 @@ export default function Footer() {
             PN
           </div>
           <div>
-            <span className="text-slate-300 font-semibold">{profileData.name} • {profileData.title}</span>
-            <span className="block text-[10px] text-slate-500">Dubai &amp; UAE Security Services</span>
+            <span className="text-slate-300 font-semibold">Paras Nepali</span>
+            <span className="block text-[10px] text-slate-500">Security Professional</span>
           </div>
         </div>
 
         {/* Verification statement */}
         <div className="text-center text-slate-400 flex items-center gap-1.5">
           <Shield className="w-3.5 h-3.5 text-sky-400 inline" />
-          <span>Professional Security Portfolio • Verified Dubai &amp; UAE Presence</span>
+          <span>Copyright to Paras Nepali</span>
         </div>
 
         {/* Contact info & back to top */}
