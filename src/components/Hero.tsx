@@ -104,12 +104,19 @@ export default function Hero() {
                       className="w-full h-full object-cover object-top"
                       src={avatarSrc}
                       onError={() => {
-                        if (avatarSrc !== '/Paras Profile Pic.jpg' && avatarSrc !== '/images/Paras Profile Pic.jpg') {
-                          setAvatarSrc('/Paras Profile Pic.jpg');
-                        } else if (avatarSrc === '/Paras Profile Pic.jpg') {
-                          setAvatarSrc('/images/Paras Profile Pic.jpg');
-                        } else {
-                          setAvatarSrc('/paras-original-avatar.jpg');
+                        const fallbacks = [
+                          '/ParasProfilePic.jpg',
+                          '/Paras Profile Pic.png',
+                          '/Paras-Profile-Pic.png',
+                          '/images/ParasProfilePic.jpg',
+                          '/images/Paras Profile Pic.png',
+                          '/Paras Profile Pic.jpg',
+                        ];
+                        const currentIndex = fallbacks.indexOf(avatarSrc);
+                        if (currentIndex >= 0 && currentIndex < fallbacks.length - 1) {
+                          setAvatarSrc(fallbacks[currentIndex + 1]);
+                        } else if (avatarSrc !== fallbacks[0]) {
+                          setAvatarSrc(fallbacks[0]);
                         }
                       }}
                     />

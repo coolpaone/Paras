@@ -87,18 +87,22 @@ export default function PhotoLightboxModal({
             referrerPolicy="no-referrer"
             onError={(e) => {
               const target = e.currentTarget;
-              if (target.src.includes('Paras Profile Pic.jpg') || target.src.includes('paras-original-avatar.jpg')) {
-                target.src = '/paras-original-avatar.jpg';
-              } else if (target.src.includes('Paras (1).jpg') || target.src.includes('Paras-1.jpg')) {
+              if (target.src.includes('Paras Profile Pic') || target.src.includes('ParasProfilePic') || target.src.includes('paras-original-avatar')) {
+                if (!target.src.includes('Paras Profile Pic.png')) {
+                  target.src = '/Paras Profile Pic.png';
+                } else {
+                  target.src = '/images/ParasProfilePic.jpg';
+                }
+              } else if (target.src.includes('Paras (1).jpg') || target.src.includes('Paras-1.jpg') || target.src.includes('Paras1.jpg')) {
                 target.src = '/images/Paras (1).jpg';
               } else if (target.src.includes('Paras (2).jpg') || target.src.includes('Paras-2.jpg')) {
                 target.src = '/images/Paras (2).jpg';
               } else if (target.src.includes('Paras (3).jpg') || target.src.includes('Paras-3.jpg')) {
                 target.src = '/images/Paras (3).jpg';
-              } else if (target.src.includes('Paras (4).jpg') || target.src.includes('Paras-4.jpg')) {
-                target.src = '/images/Paras (4).jpg';
-              } else if (target.src.includes('Paras.jpg')) {
-                target.src = '/images/Paras.jpg';
+              } else if (target.src.includes('Paras (5).jpg') || target.src.includes('Paras-5.jpg') || target.src.includes('Paras (4).jpg')) {
+                target.src = '/images/Paras (5).jpg';
+              } else if (target.src.includes('Paras (6).jpg') || target.src.includes('Paras-6.jpg') || target.src.includes('Paras.jpg')) {
+                target.src = '/images/Paras (6).jpg';
               }
             }}
             className="max-h-[72vh] max-w-full w-auto object-contain rounded-lg shadow-2xl"
