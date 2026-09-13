@@ -1,4 +1,5 @@
-import { Calendar, Building2, CheckCircle2, Shield, MapPin, Award } from 'lucide-react';
+import { Calendar, Building2, CheckCircle2, Shield, Award } from 'lucide-react';
+import { motion } from 'motion/react';
 import { experiencesData } from '../data/cvData';
 
 export default function Experience() {
@@ -6,7 +7,13 @@ export default function Experience() {
     <section className="py-24 relative" id="experience">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
+          className="max-w-3xl mb-16"
+        >
           <div className="flex items-center gap-2 text-sky-400 font-semibold tracking-wider text-xs uppercase mb-2">
             <span className="w-6 h-0.5 bg-sky-500"></span>
             Proven Track Record
@@ -15,12 +22,19 @@ export default function Experience() {
           <p className="text-slate-400 text-sm sm:text-base mt-2">
             Documented career positions within leading security service organizations in the United Arab Emirates.
           </p>
-        </div>
+        </motion.div>
 
         {/* Experience Timeline */}
         <div className="relative border-l-2 border-sky-600/40 ml-4 sm:ml-8 space-y-12">
-          {experiencesData.map((exp) => (
-            <div key={exp.id} className="relative pl-8 sm:pl-12 group">
+          {experiencesData.map((exp, expIdx) => (
+            <motion.div
+              key={exp.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: expIdx * 0.1, ease: [0.2, 0.8, 0.2, 1] }}
+              className="relative pl-8 sm:pl-12 group"
+            >
               {/* Timeline Node */}
               <div className="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-950 border-2 border-sky-500 flex items-center justify-center text-sky-400 shadow-md shadow-sky-500/30 group-hover:scale-110 transition-transform">
                 <span className="w-2.5 h-2.5 rounded-full bg-sky-400"></span>
@@ -114,7 +128,7 @@ export default function Experience() {
                   </div>
                 )}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

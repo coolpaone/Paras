@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, ChangeEvent } from 'react';
 import { Maximize2, ChevronLeft, ChevronRight, Plus, Image as ImageIcon } from 'lucide-react';
+import { motion } from 'motion/react';
 import { profileData } from '../data/cvData';
 import { ProfilePhoto } from '../types';
 
@@ -117,7 +118,13 @@ export default function ProfileGallery({ onSelectPhoto, photos = profileData.pho
     <section className="py-16 sm:py-20 bg-slate-950/60 border-t border-slate-800/80" id="gallery">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Gallery Header with Aero Navigation Buttons */}
-        <div className="flex items-center justify-between mb-8 sm:mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
+          className="flex items-center justify-between mb-8 sm:mb-10"
+        >
           <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
             Gallery
           </h2>
@@ -146,10 +153,16 @@ export default function ProfileGallery({ onSelectPhoto, photos = profileData.pho
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Carousel Container with side floating arrows */}
-        <div className="relative group/carousel">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
+          className="relative group/carousel"
+        >
           {/* Left Floating Arrow */}
           {canScrollLeft && (
             <button
@@ -312,7 +325,7 @@ export default function ProfileGallery({ onSelectPhoto, photos = profileData.pho
               )}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

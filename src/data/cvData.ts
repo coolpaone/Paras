@@ -4,7 +4,7 @@ export const profileData: ProfileData = {
   name: 'PARAS NEPALI',
   title: 'Security Guard',
   email: 'nparas2@gmail.com',
-  currentLocation: 'Sonapur, UAE',
+  currentLocation: 'UAE',
   permanentLocation: 'Gorkha, Nepal',
   yearsExperience: '5+ Years',
   availability: '',
@@ -99,7 +99,7 @@ export const experiencesData: WorkExperience[] = [
     role: 'Security Guard',
     period: '2024 – Present',
     isCurrent: true,
-    locationsServed: ['Commercial & Corporate Facilities', 'Residential Properties'],
+    locationsServed: ['Commercial & Corporate Facilities'],
     responsibilities: [
       'Surveillance and Monitoring',
       'Access Control',

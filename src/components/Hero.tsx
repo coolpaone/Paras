@@ -1,19 +1,11 @@
 import { useState, MouseEvent } from 'react';
-import { Mail, ChevronDown, CheckCircle2, MapPin, Home, Copy, Check, Globe, ExternalLink } from 'lucide-react';
+import { ChevronDown, MapPin, Home, Copy, Check, Globe, ExternalLink, Mail } from 'lucide-react';
+import { motion } from 'motion/react';
 import { profileData } from '../data/cvData';
 
 export default function Hero() {
-  const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedWebsite, setCopiedWebsite] = useState(false);
   const [avatarSrc, setAvatarSrc] = useState(profileData.avatarCropUrl);
-
-  const handleCopyEmail = (e: MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    navigator.clipboard.writeText(profileData.email);
-    setCopiedEmail(true);
-    setTimeout(() => setCopiedEmail(false), 2200);
-  };
 
   const handleCopyWebsite = (e: MouseEvent) => {
     e.preventDefault();
@@ -39,7 +31,12 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Bio & Value Proposition */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 space-y-6 text-center lg:text-left"
+          >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
               {profileData.name}
               <span className="block text-2xl sm:text-3xl lg:text-4xl font-semibold text-sky-400 mt-2">
@@ -68,16 +65,6 @@ export default function Hero() {
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-3">
               <button
                 type="button"
-                onClick={() => handleScrollTo('contact')}
-                className="px-7 py-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold text-sm transition-all shadow-lg shadow-sky-600/30 flex items-center gap-2 cursor-pointer hover:translate-y-[-1px]"
-                id="hero-inquiry-btn"
-              >
-                <Mail className="w-4 h-4" />
-                <span>Direct Inquiry</span>
-              </button>
-
-              <button
-                type="button"
                 onClick={() => handleScrollTo('experience')}
                 className="px-6 py-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-300 font-semibold text-sm border border-slate-800 hover:border-slate-700 transition-all flex items-center gap-2 cursor-pointer"
                 id="hero-history-btn"
@@ -86,10 +73,15 @@ export default function Hero() {
                 <ChevronDown className="w-4 h-4 text-slate-400" />
               </button>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Profile Picture & Professional Identity */}
-          <div className="lg:col-span-5 flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 flex justify-center"
+          >
             <div className="relative w-full max-w-md">
               {/* Decorative border glow */}
               <div className="absolute -inset-1.5 bg-gradient-to-r from-sky-600 to-cyan-500 rounded-3xl blur-xl opacity-25"></div>
@@ -129,6 +121,27 @@ export default function Hero() {
 
                 {/* Verified Contact Items */}
                 <div className="mt-6 pt-6 border-t border-slate-800/80 space-y-3 text-left text-sm">
+                  {/* Send Email */}
+                  <div className="flex items-center justify-between gap-3 text-slate-300 bg-slate-950/50 p-2.5 rounded-xl border border-slate-800/60 hover:border-sky-500/50 transition-colors group/item">
+                    <a
+                      href={`mailto:${profileData.email}`}
+                      className="flex items-center gap-3 min-w-0 flex-1"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-sky-500/10 group-hover/item:bg-sky-500 group-hover/item:text-white flex items-center justify-center text-sky-400 flex-shrink-0 transition-colors">
+                        <Mail className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <span className="block text-[11px] text-slate-400 uppercase tracking-wider font-semibold">
+                          Direct Email
+                        </span>
+                        <span className="font-semibold text-sky-400 group-hover/item:text-sky-300 text-xs sm:text-sm flex items-center gap-1.5">
+                          Send Email
+                          <ExternalLink className="w-3 h-3 opacity-70" />
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+
                   {/* Official Website */}
                   <div className="flex items-center justify-between gap-3 text-slate-300 bg-slate-950/50 p-2.5 rounded-xl border border-slate-800/60 group/item">
                     <div className="flex items-center gap-3 min-w-0">
@@ -159,33 +172,6 @@ export default function Hero() {
                     </button>
                   </div>
 
-                  {/* Email with copy button */}
-                  <div className="flex items-center justify-between gap-3 text-slate-300 bg-slate-950/50 p-2.5 rounded-xl border border-slate-800/60 group/item">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-sky-400 flex-shrink-0">
-                        <Mail className="w-4 h-4" />
-                      </div>
-                      <a
-                        href={`mailto:${profileData.email}`}
-                        className="hover:text-sky-400 transition-colors truncate font-mono text-xs sm:text-sm font-medium"
-                      >
-                        {profileData.email}
-                      </a>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={handleCopyEmail}
-                      className="p-1.5 rounded-md hover:bg-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer"
-                      title="Copy email to clipboard"
-                    >
-                      {copiedEmail ? (
-                        <Check className="w-4 h-4 text-emerald-400" />
-                      ) : (
-                        <Copy className="w-4 h-4" />
-                      )}
-                    </button>
-                  </div>
-
                   {/* Present Location */}
                   <div className="flex items-center gap-3 text-slate-300 bg-slate-950/50 p-2.5 rounded-xl border border-slate-800/60">
                     <div className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center text-sky-400 flex-shrink-0">
@@ -193,7 +179,7 @@ export default function Hero() {
                     </div>
                     <div>
                       <span className="block text-[11px] text-slate-400 uppercase tracking-wider font-semibold">
-                        Current Residence / Hub
+                        Current Address
                       </span>
                       <span className="font-medium text-slate-200">{profileData.currentLocation}</span>
                     </div>
@@ -212,17 +198,9 @@ export default function Hero() {
                     </div>
                   </div>
                 </div>
-
-                {/* Verification badge */}
-                <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-center text-xs font-medium text-slate-400">
-                  <div className="flex items-center gap-1.5 text-emerald-400 font-semibold">
-                    <CheckCircle2 className="w-4 h-4" />
-                    <span>Verified Professional Profile</span>
-                  </div>
-                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { CheckCircle2, Globe2 } from 'lucide-react';
+import { motion } from 'motion/react';
 import { languagesData } from '../data/cvData';
 
 export default function Languages() {
@@ -6,7 +7,13 @@ export default function Languages() {
     <section className="py-20 relative" id="languages">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
+          className="max-w-3xl mb-12"
+        >
           <div className="flex items-center gap-2 text-sky-400 font-semibold tracking-wider text-xs uppercase mb-2">
             <span className="w-6 h-0.5 bg-sky-500"></span>
             Multilingual Communication
@@ -15,13 +22,17 @@ export default function Languages() {
           <p className="text-slate-400 text-sm sm:text-base mt-2">
             Fluent multi-language proficiency enabling seamless communication with multicultural teams and multinational guests in the UAE.
           </p>
-        </div>
+        </motion.div>
 
         {/* Languages Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {languagesData.map((lang) => (
-            <div
+          {languagesData.map((lang, langIdx) => (
+            <motion.div
               key={lang.code}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.45, delay: langIdx * 0.08, ease: [0.2, 0.8, 0.2, 1] }}
               className="bg-slate-900 border border-slate-800 p-6 rounded-2xl flex flex-col justify-between hover:border-slate-700 transition-colors shadow-sm"
             >
               <div className="flex items-center justify-between gap-4">
@@ -46,17 +57,23 @@ export default function Languages() {
                   {lang.notes}
                 </p>
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Tactical communication note */}
-        <div className="mt-6 p-4 rounded-xl bg-slate-900/50 border border-slate-800/60 flex items-center gap-3 text-xs text-slate-400">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-30px" }}
+          transition={{ duration: 0.45, delay: 0.2, ease: [0.2, 0.8, 0.2, 1] }}
+          className="mt-6 p-4 rounded-xl bg-slate-900/50 border border-slate-800/60 flex items-center gap-3 text-xs text-slate-400"
+        >
           <Globe2 className="w-4 h-4 text-sky-400 flex-shrink-0" />
           <span>
             Trilingual capability in English, Hindi, and Nepali covers over 85% of day-to-day guest, contractor, and workforce communication in commercial UAE venues.
           </span>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

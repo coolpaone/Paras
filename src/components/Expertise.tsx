@@ -1,4 +1,5 @@
 import { PieChart, Users, UserCheck, Clock, Sparkles, MessageSquare, Lightbulb } from 'lucide-react';
+import { motion } from 'motion/react';
 import { skillsData } from '../data/cvData';
 
 export default function Expertise() {
@@ -27,7 +28,13 @@ export default function Expertise() {
     <section className="py-20 bg-slate-900 border-y border-slate-800/80 relative" id="expertise">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center justify-center gap-2 text-sky-400 font-semibold tracking-wider text-xs uppercase mb-2">
             <span className="w-6 h-0.5 bg-sky-500"></span>
             Key Competencies
@@ -37,15 +44,19 @@ export default function Expertise() {
           <p className="text-slate-400 text-sm sm:text-base mt-2">
             Specialized strengths and operational disciplines demonstrated throughout professional security tenures.
           </p>
-        </div>
+        </motion.div>
 
         {/* Skills Cards Grid matching CV Expertise list */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skillsData.map((skill) => {
+          {skillsData.map((skill, skillIdx) => {
             const isWide = skill.id === 'skill-critical-thinking';
             return (
-              <div
+              <motion.div
                 key={skill.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: skillIdx * 0.06, ease: [0.2, 0.8, 0.2, 1] }}
                 className={`bg-slate-950 border border-slate-800/90 hover:border-sky-500/50 p-6 sm:p-7 rounded-2xl transition-all duration-200 group shadow-sm flex flex-col justify-between ${
                   isWide ? 'sm:col-span-2 lg:col-span-2' : ''
                 }`}
@@ -66,7 +77,7 @@ export default function Expertise() {
                   <span>Standard UAE Field Metric</span>
                   <span className="text-sky-400/80 font-semibold">Verified</span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
