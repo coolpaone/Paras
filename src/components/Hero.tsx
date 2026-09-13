@@ -117,7 +117,6 @@ export default function Hero() {
 
                 {/* Profile Details */}
                 <h2 className="text-2xl font-bold text-white tracking-tight">Paras Nepali</h2>
-                <p className="text-sky-400 font-medium text-sm mt-1">Professional Security Guard</p>
 
                 {/* Verified Contact Items */}
                 <div className="mt-6 pt-6 border-t border-slate-800/80 space-y-3 text-left text-sm">

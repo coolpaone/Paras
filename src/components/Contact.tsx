@@ -88,7 +88,6 @@ export default function Contact() {
                 <User className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-xs uppercase font-semibold text-slate-400">Security Professional</div>
                 <div className="text-white font-bold text-sm sm:text-base">Paras Nepali</div>
               </div>
             </div>
@@ -189,7 +188,7 @@ export default function Contact() {
               <div>
                 <h3 className="text-xl font-bold text-white mb-2">Send an Inquiry</h3>
                 <p className="text-slate-400 text-xs sm:text-sm mb-6">
-                  Prepare message details to connect directly with Paras Nepali.
+                  Prepare message details to connect directly with me.
                 </p>
 
                 {submitted && (
