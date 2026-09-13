@@ -31,22 +31,22 @@ export default function ProfileGallery({ onSelectPhoto, photos = profileData.pho
 
   const getFallbacks = (id: string, url: string): string[] => {
     if (id === 'paras-profile-pic' || id === 'photo-formal-id') {
-      return ['/ParasProfilePic.jpg', '/Paras Profile Pic.png', '/Paras-Profile-Pic.png', '/images/ParasProfilePic.jpg', '/Paras Profile Pic.jpg', '/paras-original-avatar.jpg'];
+      return ['/Paras Profile Pic.jpg'];
     }
     if (id === 'paras-1') {
-      return ['/Paras (1).jpg', '/images/Paras (1).jpg', '/Paras-1.jpg', '/images/Paras-1.jpg', '/Paras1.jpg'];
+      return ['/Paras (1).jpg'];
     }
     if (id === 'paras-2' || id === 'photo-burj-skyline') {
-      return ['/Paras (2).jpg', '/images/Paras (2).jpg', '/Paras-2.jpg', '/images/Paras-2.jpg', '/Paras2.jpg'];
+      return ['/Paras (2).jpg'];
     }
     if (id === 'paras-3' || id === 'photo-retail-uniform') {
-      return ['/Paras (3).jpg', '/images/Paras (3).jpg', '/Paras-3.jpg', '/images/Paras-3.jpg', '/Paras3.jpg'];
+      return ['/Paras (3).jpg'];
     }
     if (id === 'paras-5' || id === 'paras-4' || id === 'photo-casual-profile') {
-      return ['/Paras (5).jpg', '/images/Paras (5).jpg', '/Paras-5.jpg', '/images/Paras-5.jpg', '/Paras5.jpg', '/Paras (4).jpg'];
+      return ['/Paras (5).jpg'];
     }
     if (id === 'paras-6' || id === 'paras-street' || id === 'photo-executive-portrait') {
-      return ['/Paras (6).jpg', '/images/Paras (6).jpg', '/Paras-6.jpg', '/images/Paras-6.jpg', '/Paras.jpg', '/images/Paras.jpg'];
+      return ['/Paras (6).jpg'];
     }
     return [url];
   };

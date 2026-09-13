@@ -10,12 +10,12 @@ export const profileData: ProfileData = {
   availability: '',
   bio: 'Dedicated Security Professional committed to protecting people, property, and communities through vigilance, discipline, integrity, and professionalism. With a positive attitude, strong sense of responsibility, and a global mindset, I believe security is about more than protection—it is about building trust, supporting people, and creating safe environments where communities can grow and thrive. I strive to contribute positively to every place I serve and to be part of a safer, more connected, and secure world.',
   summaryStatement: 'I am committed to protecting people, supporting communities, and creating a safe and positive environment wherever I serve. With integrity, discipline, and a global mindset, I strive to make a meaningful contribution and connect with people through trust, respect, and professionalism.',
-  avatarCropUrl: '/ParasProfilePic.jpg',
+  avatarCropUrl: '/Paras Profile Pic.jpg',
   website: 'www.parasnepali.com.np',
   photos: [
     {
       id: 'paras-profile-pic',
-      url: '/ParasProfilePic.jpg',
+      url: '/Paras Profile Pic.jpg',
       title: 'Paras Profile Pic',
       category: 'Official Identification',
       description: 'Official formal security portrait in sharp black suit, white dress shirt, and black tie.',

@@ -69,18 +69,10 @@ export default function Navbar() {
         >
           <div className="w-10 h-10 rounded-xl overflow-hidden shadow-md shadow-sky-600/30 group-hover:scale-105 transition-transform duration-200 ring-2 ring-sky-400/40 bg-slate-800 flex-shrink-0">
             <img
-              src="/ParasProfilePic.jpg"
+              src="/Paras Profile Pic.jpg"
               alt="Paras Nepali"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover object-top"
-              onError={(e) => {
-                const target = e.currentTarget;
-                if (!target.src.includes('Paras Profile Pic.png')) {
-                  target.src = '/Paras Profile Pic.png';
-                } else if (!target.src.includes('/images/ParasProfilePic.jpg')) {
-                  target.src = '/images/ParasProfilePic.jpg';
-                }
-              }}
             />
           </div>
           <div className="text-left">

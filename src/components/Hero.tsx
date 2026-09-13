@@ -94,23 +94,7 @@ export default function Hero() {
                       alt="Paras Nepali - Professional Security Guard"
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover object-top"
-                      src={avatarSrc}
-                      onError={() => {
-                        const fallbacks = [
-                          '/ParasProfilePic.jpg',
-                          '/Paras Profile Pic.png',
-                          '/Paras-Profile-Pic.png',
-                          '/images/ParasProfilePic.jpg',
-                          '/images/Paras Profile Pic.png',
-                          '/Paras Profile Pic.jpg',
-                        ];
-                        const currentIndex = fallbacks.indexOf(avatarSrc);
-                        if (currentIndex >= 0 && currentIndex < fallbacks.length - 1) {
-                          setAvatarSrc(fallbacks[currentIndex + 1]);
-                        } else if (avatarSrc !== fallbacks[0]) {
-                          setAvatarSrc(fallbacks[0]);
-                        }
-                      }}
+                      src={avatarSrc || '/Paras Profile Pic.jpg'}
                     />
                   </div>
                 </div>
