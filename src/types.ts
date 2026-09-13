@@ -63,6 +63,6 @@ export interface ContactFormData {
   name: string;
   company: string;
   subject: string;
-  roleType: string;
+  roleType?: string;
   message: string;
 }

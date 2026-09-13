@@ -8,8 +8,8 @@ export default function Contact() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     company: '',
-    subject: 'Security Role Inquiry for Paras Nepali',
-    roleType: 'Full-time UAE Security Role',
+    subject: '',
+    roleType: '',
     message: '',
   });
 
@@ -24,7 +24,7 @@ export default function Contact() {
   };
 
   const handleCopyDraft = () => {
-    const draftText = `From: ${formData.name} (${formData.company})\nSubject: ${formData.subject}\nRole Category: ${formData.roleType}\n\n${formData.message}`;
+    const draftText = `From: ${formData.name}${formData.company ? ` (${formData.company})` : ''}\nSubject: ${formData.subject || 'Inquiry for Paras Nepali'}\n\n${formData.message}`;
     navigator.clipboard.writeText(draftText);
     setCopiedDraft(true);
     setTimeout(() => setCopiedDraft(false), 2000);
@@ -40,14 +40,15 @@ export default function Contact() {
     // Build mailto URI
     const fullBody = `Hello Paras,\n\nMy name is ${formData.name}${
       formData.company ? ` from ${formData.company}` : ''
-    }.\nRole Type: ${formData.roleType}\n\n${formData.message}\n\nBest regards,\n${formData.name}`;
+    }.\n\n${formData.message}\n\nBest regards,\n${formData.name}`;
 
     const mailtoUrl = `mailto:${profileData.email}?subject=${encodeURIComponent(
-      formData.subject || 'Security Role Inquiry'
+      formData.subject || 'Inquiry for Paras Nepali'
     )}&body=${encodeURIComponent(fullBody)}`;
 
     // Open user's default email client
     window.location.href = mailtoUrl;
+
     setSubmitted(true);
   };
 
@@ -186,7 +187,7 @@ export default function Contact() {
           >
             <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm flex-1 flex flex-col justify-between">
               <div>
-                <h3 className="text-xl font-bold text-white mb-2">Send an Inquiry or Job Opportunity</h3>
+                <h3 className="text-xl font-bold text-white mb-2">Send an Inquiry</h3>
                 <p className="text-slate-400 text-xs sm:text-sm mb-6">
                   Prepare message details to connect directly with Paras Nepali.
                 </p>
@@ -224,7 +225,7 @@ export default function Contact() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1.5" htmlFor="name">
-                        Your Name / Recruiter <span className="text-rose-400">*</span>
+                        YOUR NAME <span className="text-rose-400">*</span>
                       </label>
                       <input
                         className="w-full rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 text-sm px-4 py-3 outline-none transition-colors"
@@ -240,7 +241,7 @@ export default function Contact() {
 
                     <div>
                       <label className="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1.5" htmlFor="company">
-                        Company / Facility
+                        COMPANY / FACILITY / EMAIL ADDRESS <span className="text-rose-400">*</span>
                       </label>
                       <input
                         className="w-full rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 text-sm px-4 py-3 outline-none transition-colors"
@@ -254,43 +255,24 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1.5" htmlFor="subject">
-                        Subject
-                      </label>
-                      <input
-                        className="w-full rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 text-sm px-4 py-3 outline-none transition-colors"
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        type="text"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1.5" htmlFor="roleType">
-                        Opportunity Type
-                      </label>
-                      <select
-                        id="roleType"
-                        value={formData.roleType}
-                        onChange={(e) => setFormData({ ...formData, roleType: e.target.value })}
-                        className="w-full rounded-xl bg-slate-900 border border-slate-800 text-white focus:border-sky-500 focus:ring-1 focus:ring-sky-500 text-sm px-4 py-3 outline-none transition-colors"
-                      >
-                        <option value="Full-time UAE Security Role">Full-time Security Guard (UAE)</option>
-                        <option value="Hospitality & Concierge Security">Hospitality &amp; Concierge Security</option>
-                        <option value="Retail & Mall Security">Retail &amp; Mall Security</option>
-                        <option value="Corporate / Event Deployment">Corporate Facility / Event Security</option>
-                        <option value="General Inquiry / Interview Schedule">General Inquiry / Interview</option>
-                      </select>
-                    </div>
+                  <div>
+                    <label className="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1.5" htmlFor="subject">
+                      SUBJECT
+                    </label>
+                    <input
+                      className="w-full rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 text-sm px-4 py-3 outline-none transition-colors"
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                      placeholder="Subject......"
+                      type="text"
+                    />
                   </div>
 
                   <div>
                     <label className="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-1.5" htmlFor="body">
-                      Message / Opportunity Details <span className="text-rose-400">*</span>
+                      MESSAGE / OPPORTUNITY DETAILS <span className="text-rose-400">*</span>
                     </label>
                     <textarea
                       className="w-full rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 text-sm px-4 py-3 outline-none transition-colors resize-none"
@@ -298,7 +280,7 @@ export default function Contact() {
                       name="body"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Describe the role location, shifts, requirements, or meeting schedule..."
+                      placeholder="Message........"
                       required
                       rows={4}
                     />

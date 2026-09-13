@@ -47,7 +47,7 @@ export default function About() {
             <Quote className="absolute top-6 right-6 w-12 h-12 text-slate-800/60 rotate-180 pointer-events-none" />
 
             <p className="text-slate-200 text-base sm:text-lg leading-relaxed relative z-10 font-normal">
-              {profileData.summaryStatement || profileData.bio}
+              &ldquo;{profileData.summaryStatement || profileData.bio}&rdquo;
             </p>
 
             <div className="mt-8 pt-6 border-t border-slate-800/90 flex flex-wrap items-center justify-between gap-4">
@@ -58,7 +58,7 @@ export default function About() {
                 <span className="text-sm text-slate-300 font-medium">Years of Dedicated Field Vigilance</span>
               </div>
               <div className="text-xs uppercase tracking-widest text-slate-400 font-semibold">
-                PARAS NEPALI • SECURITY GUARD
+                PARAS NEPALI
               </div>
             </div>
           </motion.div>
