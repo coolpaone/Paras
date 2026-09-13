@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect, ChangeEvent } from 'react';
-import { Maximize2, ChevronLeft, ChevronRight, Plus, Image as ImageIcon } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { Maximize2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { profileData } from '../data/cvData';
 import { ProfilePhoto } from '../types';
@@ -9,25 +9,13 @@ interface ProfileGalleryProps {
   photos?: ProfilePhoto[];
 }
 
-interface CustomSlot {
-  id: string;
-  url: string | null;
-}
-
 export default function ProfileGallery({ onSelectPhoto, photos = profileData.photos }: ProfileGalleryProps) {
   const [failedIds, setFailedIds] = useState<Record<string, boolean>>({});
   const [currentSrcs, setCurrentSrcs] = useState<Record<string, string>>({});
-  const [slots, setSlots] = useState<CustomSlot[]>([
-    { id: 'slot-1', url: null },
-    { id: 'slot-2', url: null },
-  ]);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const fileInputRef1 = useRef<HTMLInputElement>(null);
-  const fileInputRef2 = useRef<HTMLInputElement>(null);
 
   const getFallbacks = (id: string, url: string): string[] => {
     if (id === 'paras-profile-pic' || id === 'photo-formal-id') {
@@ -96,18 +84,6 @@ export default function ProfileGallery({ onSelectPhoto, photos = profileData.pho
       scrollContainerRef.current.scrollBy({
         left: direction === 'left' ? -scrollStep : scrollStep,
         behavior: 'smooth',
-      });
-    }
-  };
-
-  const handleFileUpload = (index: number, e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const newUrl = URL.createObjectURL(file);
-      setSlots((prev) => {
-        const next = [...prev];
-        next[index] = { ...next[index], url: newUrl };
-        return next;
       });
     }
   };
@@ -222,108 +198,6 @@ export default function ProfileGallery({ onSelectPhoto, photos = profileData.pho
                 </div>
               );
             })}
-
-            {/* Slot 1 for Additional Photo */}
-            <div
-              className="flex-shrink-0 w-64 sm:w-72 aspect-[3/4] snap-start"
-              onClick={() => {
-                if (slots[0].url) {
-                  onSelectPhoto({
-                    id: 'custom-slot-1',
-                    url: slots[0].url,
-                    title: '',
-                    category: '',
-                    description: '',
-                    locationTag: '',
-                    featured: false,
-                  });
-                } else {
-                  fileInputRef1.current?.click();
-                }
-              }}
-            >
-              <input
-                type="file"
-                ref={fileInputRef1}
-                accept="image/*"
-                className="hidden"
-                onChange={(e) => handleFileUpload(0, e)}
-              />
-              {slots[0].url ? (
-                <div className="group relative w-full h-full bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden cursor-pointer hover:border-sky-500/60 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-sky-500/10 hover:-translate-y-1">
-                  <img
-                    src={slots[0].url}
-                    alt="Additional photograph"
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
-                  />
-                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                    <span className="w-8 h-8 rounded-lg bg-slate-900/80 backdrop-blur-md text-sky-400 border border-slate-700/80 flex items-center justify-center shadow-lg">
-                      <Maximize2 className="w-4 h-4" />
-                    </span>
-                  </div>
-                </div>
-              ) : (
-                <div className="w-full h-full bg-slate-900/40 border-2 border-dashed border-slate-800/80 hover:border-sky-500/60 rounded-2xl flex flex-col items-center justify-center p-6 text-center transition-all cursor-pointer group hover:bg-slate-900/70">
-                  <div className="w-12 h-12 rounded-xl bg-slate-800/80 group-hover:bg-sky-500/10 text-slate-500 group-hover:text-sky-400 flex items-center justify-center mb-3 transition-colors">
-                    <Plus className="w-6 h-6" />
-                  </div>
-                  <div className="w-8 h-8 rounded-lg bg-slate-800/40 flex items-center justify-center text-slate-600 group-hover:text-sky-400/80 transition-colors">
-                    <ImageIcon className="w-4 h-4" />
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Slot 2 for Additional Photo */}
-            <div
-              className="flex-shrink-0 w-64 sm:w-72 aspect-[3/4] snap-start"
-              onClick={() => {
-                if (slots[1].url) {
-                  onSelectPhoto({
-                    id: 'custom-slot-2',
-                    url: slots[1].url,
-                    title: '',
-                    category: '',
-                    description: '',
-                    locationTag: '',
-                    featured: false,
-                  });
-                } else {
-                  fileInputRef2.current?.click();
-                }
-              }}
-            >
-              <input
-                type="file"
-                ref={fileInputRef2}
-                accept="image/*"
-                className="hidden"
-                onChange={(e) => handleFileUpload(1, e)}
-              />
-              {slots[1].url ? (
-                <div className="group relative w-full h-full bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden cursor-pointer hover:border-sky-500/60 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-sky-500/10 hover:-translate-y-1">
-                  <img
-                    src={slots[1].url}
-                    alt="Additional photograph"
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 ease-out"
-                  />
-                  <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                    <span className="w-8 h-8 rounded-lg bg-slate-900/80 backdrop-blur-md text-sky-400 border border-slate-700/80 flex items-center justify-center shadow-lg">
-                      <Maximize2 className="w-4 h-4" />
-                    </span>
-                  </div>
-                </div>
-              ) : (
-                <div className="w-full h-full bg-slate-900/40 border-2 border-dashed border-slate-800/80 hover:border-sky-500/60 rounded-2xl flex flex-col items-center justify-center p-6 text-center transition-all cursor-pointer group hover:bg-slate-900/70">
-                  <div className="w-12 h-12 rounded-xl bg-slate-800/80 group-hover:bg-sky-500/10 text-slate-500 group-hover:text-sky-400 flex items-center justify-center mb-3 transition-colors">
-                    <Plus className="w-6 h-6" />
-                  </div>
-                  <div className="w-8 h-8 rounded-lg bg-slate-800/40 flex items-center justify-center text-slate-600 group-hover:text-sky-400/80 transition-colors">
-                    <ImageIcon className="w-4 h-4" />
-                  </div>
-                </div>
-              )}
-            </div>
           </div>
         </motion.div>
       </div>
