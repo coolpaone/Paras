@@ -40,15 +40,6 @@ export const profileData: ProfileData = {
       locationTag: 'Dubai, UAE',
       featured: true,
     },
-    {
-      id: 'paras-3',
-      url: '/Paras (3).jpg',
-      title: 'Paras (3)',
-      category: 'Commercial & Retail',
-      description: 'High-visibility deployment in formal tailored blue blazer and tie.',
-      locationTag: 'Dubai, UAE',
-      featured: true,
-    },
   ],
   stats: [
     { label: '5+ Years', sublabel: 'Experience' },

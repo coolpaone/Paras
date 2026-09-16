@@ -18,7 +18,7 @@ export default function Experience() {
             <span className="w-6 h-0.5 bg-sky-500"></span>
             Proven Track Record
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Work Experience</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Professional Background</h2>
           <p className="text-slate-400 text-sm sm:text-base mt-2">
             Documented career positions within leading security service organizations in the United Arab Emirates.
           </p>

@@ -33,12 +33,11 @@ export default function Expertise() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="max-w-3xl mb-16 text-left"
         >
-          <div className="inline-flex items-center justify-center gap-2 text-sky-400 font-semibold tracking-wider text-xs uppercase mb-2">
+          <div className="flex items-center gap-2 text-sky-400 font-semibold tracking-wider text-xs uppercase mb-2">
             <span className="w-6 h-0.5 bg-sky-500"></span>
             Key Competencies
-            <span className="w-6 h-0.5 bg-sky-500"></span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Expertise &amp; Skills</h2>
           <p className="text-slate-400 text-sm sm:text-base mt-2">

@@ -27,9 +27,6 @@ export default function ProfileGallery({ onSelectPhoto, photos = profileData.pho
     if (id === 'paras-2' || id === 'photo-burj-skyline') {
       return ['/Paras (2).jpg'];
     }
-    if (id === 'paras-3' || id === 'photo-retail-uniform') {
-      return ['/Paras (3).jpg'];
-    }
     return [url];
   };
 
@@ -95,8 +92,12 @@ export default function ProfileGallery({ onSelectPhoto, photos = profileData.pho
           transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
           className="mb-8 sm:mb-10"
         >
+          <div className="flex items-center gap-2 text-sky-400 font-semibold tracking-wider text-xs uppercase mb-2">
+            <span className="w-6 h-0.5 bg-sky-500"></span>
+            Archive
+          </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-            Gallery
+            Media Assets
           </h2>
         </motion.div>
 
