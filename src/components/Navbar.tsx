@@ -114,7 +114,7 @@ export default function Navbar() {
         {/* Actions */}
         <div className="hidden sm:flex items-center gap-3">
           <a
-            href={`mailto:${profileData.email}?subject=Security%20Role%20Inquiry%20for%20Paras%20Nepali`}
+            href={`mailto:${profileData.email}`}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm shadow-sky-600/40 hover:shadow-md hover:shadow-sky-500/50"
             id="nav-email-btn"
           >

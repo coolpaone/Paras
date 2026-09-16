@@ -15,11 +15,10 @@ export default function Footer() {
         <button
           type="button"
           onClick={scrollToTop}
-          className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-white transition-colors cursor-pointer flex items-center gap-2 group"
+          className="flex md:hidden p-2.5 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-white transition-colors cursor-pointer items-center gap-2 group"
           title="Back to top"
           aria-label="Scroll back to top"
         >
-          <span className="hidden sm:inline text-xs group-hover:text-white">Back to top</span>
           <ArrowUp className="w-3.5 h-3.5" />
         </button>
       </div>
