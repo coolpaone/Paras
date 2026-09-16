@@ -67,10 +67,32 @@ export default function Experience() {
                     )}
                   </div>
 
-                  {/* Period badge */}
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-slate-800 text-slate-200 text-sm font-semibold self-start sm:self-center font-mono border border-slate-700/50">
-                    <Calendar className="w-4 h-4 text-sky-400" />
-                    <span>{exp.period}</span>
+                  {/* Period badge with optional company logo above */}
+                  <div className="flex flex-col items-start sm:items-end gap-2 self-start sm:self-center">
+                    {exp.id === 'exp-berkeley' && (
+                      <div className="mb-0.5">
+                        <img
+                          src="/berkeley-logo.png"
+                          alt="Berkeley Services - Defined by Trust"
+                          className="h-8 sm:h-9 w-auto object-contain max-w-[160px]"
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+                    )}
+                    {exp.id === 'exp-citizen' && (
+                      <div className="mb-0.5">
+                        <img
+                          src="/citizen-logo.png"
+                          alt="Citizen Security Services Pvt Ltd"
+                          className="h-10 sm:h-11 w-auto object-contain max-w-[140px] sm:-translate-x-12"
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+                    )}
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-slate-800 text-slate-200 text-sm font-semibold font-mono border border-slate-700/50">
+                      <Calendar className="w-4 h-4 text-sky-400" />
+                      <span>{exp.period}</span>
+                    </div>
                   </div>
                 </div>
 
