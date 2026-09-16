@@ -30,12 +30,6 @@ export default function ProfileGallery({ onSelectPhoto, photos = profileData.pho
     if (id === 'paras-3' || id === 'photo-retail-uniform') {
       return ['/Paras (3).jpg'];
     }
-    if (id === 'paras-5' || id === 'paras-4' || id === 'photo-casual-profile') {
-      return ['/Paras (5).jpg'];
-    }
-    if (id === 'paras-6' || id === 'paras-street' || id === 'photo-executive-portrait') {
-      return ['/Paras (6).jpg'];
-    }
     return [url];
   };
 
@@ -93,42 +87,17 @@ export default function ProfileGallery({ onSelectPhoto, photos = profileData.pho
   return (
     <section className="py-16 sm:py-20 bg-slate-950/60 border-t border-slate-800/80" id="gallery">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Gallery Header with Aero Navigation Buttons */}
+        {/* Gallery Header */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
-          className="flex items-center justify-between mb-8 sm:mb-10"
+          className="mb-8 sm:mb-10"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
             Gallery
           </h2>
-
-          {/* Aero / Arrow Next & Previous Buttons */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            <button
-              type="button"
-              onClick={() => handleScroll('left')}
-              disabled={!canScrollLeft}
-              aria-label="Previous photos"
-              className="w-10 h-10 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-sky-500/50 hover:bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md disabled:opacity-30 disabled:cursor-not-allowed"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-
-            <button
-              type="button"
-              onClick={() => handleScroll('right')}
-              disabled={!canScrollRight}
-              aria-label="Next photos"
-              className="px-4 h-10 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold text-sm flex items-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-sky-600/30 hover:translate-x-0.5 disabled:opacity-40 disabled:hover:translate-x-0"
-              id="gallery-next-btn"
-            >
-              <span>Next</span>
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
         </motion.div>
 
         {/* Carousel Container with side floating arrows */}
