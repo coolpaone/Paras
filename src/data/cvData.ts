@@ -3,7 +3,7 @@ import { ProfileData, WorkExperience, SkillItem, LanguageItem } from '../types';
 export const profileData: ProfileData = {
   name: 'PARAS NEPALI',
   title: 'Security Guard',
-  email: 'nparas2@gmail.com',
+  email: 'coolpaaras@gmail.com',
   currentLocation: 'UAE',
   permanentLocation: 'Gorkha, Nepal',
   yearsExperience: '5+ Years',

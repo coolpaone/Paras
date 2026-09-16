@@ -113,14 +113,17 @@ export default function Navbar() {
 
         {/* Actions */}
         <div className="hidden sm:flex items-center gap-3">
-          <a
-            href={`mailto:${profileData.email}`}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm shadow-sky-600/40 hover:shadow-md hover:shadow-sky-500/50"
+          <button
+            type="button"
+            onClick={() => {
+              window.location.href = `mailto:${profileData.email}`;
+            }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm shadow-sky-600/40 hover:shadow-md hover:shadow-sky-500/50 cursor-pointer"
             id="nav-email-btn"
           >
             <Mail className="w-4 h-4" />
             <span>Email Paras</span>
-          </a>
+          </button>
         </div>
 
         {/* Mobile menu trigger */}
@@ -161,14 +164,17 @@ export default function Navbar() {
           </div>
 
           <div className="pt-3 border-t border-slate-800/80 flex flex-col gap-2">
-            <a
-              href={`mailto:${profileData.email}`}
-              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 text-sm font-semibold text-white shadow-md shadow-sky-600/30"
+            <button
+              type="button"
+              onClick={() => {
+                window.location.href = `mailto:${profileData.email}`;
+              }}
+              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-sky-600 hover:bg-sky-500 text-sm font-semibold text-white shadow-md shadow-sky-600/30 cursor-pointer"
             >
               <Mail className="w-4 h-4" />
-              <span>Email Paras ({profileData.email})</span>
+              <span>Email Paras</span>
               <ArrowUpRight className="w-4 h-4" />
-            </a>
+            </button>
           </div>
         </div>
       )}

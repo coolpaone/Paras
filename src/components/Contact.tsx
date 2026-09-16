@@ -108,23 +108,29 @@ export default function Contact() {
                         <span>DIRECT EMAIL</span>
                         <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-sky-400 transition-colors" />
                       </div>
-                      <a
-                        href={`mailto:${profileData.email}`}
-                        className="text-white font-mono text-sm sm:text-base font-medium hover:text-sky-300 transition-colors truncate block mt-0.5"
+                      <button
+                        type="button"
+                        onClick={() => {
+                          window.location.href = `mailto:${profileData.email}`;
+                        }}
+                        className="text-white font-mono text-sm sm:text-base font-medium hover:text-sky-300 transition-colors truncate block mt-0.5 text-left cursor-pointer"
                         id="contact-direct-email-link"
                       >
                         Send Email
-                      </a>
+                      </button>
                     </div>
                   </div>
-                  <a
-                    href={`mailto:${profileData.email}`}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      window.location.href = `mailto:${profileData.email}`;
+                    }}
                     className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs sm:text-sm flex items-center gap-2 shadow-md shadow-blue-600/30 hover:shadow-blue-600/50 transition-all cursor-pointer flex-shrink-0"
                     id="contact-direct-send-btn"
                   >
                     <Mail className="w-4 h-4" />
                     <span>Send</span>
-                  </a>
+                  </button>
                 </div>
 
                 {/* Row 2: Personal Portal */}

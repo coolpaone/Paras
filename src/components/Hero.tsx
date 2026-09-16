@@ -106,9 +106,12 @@ export default function Hero() {
                 <div className="mt-6 pt-6 border-t border-slate-800/80 space-y-3 text-left text-sm">
                   {/* Send Email */}
                   <div className="flex items-center justify-between gap-3 text-slate-300 bg-slate-950/50 p-2.5 rounded-xl border border-slate-800/60 hover:border-sky-500/50 transition-colors group/item">
-                    <a
-                      href={`mailto:${profileData.email}`}
-                      className="flex items-center gap-3 min-w-0 flex-1"
+                    <button
+                      type="button"
+                      onClick={() => {
+                        window.location.href = `mailto:${profileData.email}`;
+                      }}
+                      className="flex items-center gap-3 min-w-0 flex-1 text-left cursor-pointer"
                     >
                       <div className="w-8 h-8 rounded-lg bg-sky-500/10 group-hover/item:bg-sky-500 group-hover/item:text-white flex items-center justify-center text-sky-400 flex-shrink-0 transition-colors">
                         <Mail className="w-4 h-4" />
@@ -122,7 +125,7 @@ export default function Hero() {
                           <ExternalLink className="w-3 h-3 opacity-70" />
                         </span>
                       </div>
-                    </a>
+                    </button>
                   </div>
 
                   {/* Official Website */}
