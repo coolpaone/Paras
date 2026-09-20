@@ -23,7 +23,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden hero-pattern" id="hero">
+    <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden hero-pattern" id="about">
       {/* Ambient glowing backdrops */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/3 right-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -37,13 +37,10 @@ export default function Hero() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 space-y-6 text-center lg:text-left"
           >
-            {/* Summary Statement & Personal Profile Header */}
-            <div>
-              <div className="flex items-center gap-2 text-sky-400 font-semibold tracking-wider text-xs uppercase mb-2 justify-center lg:justify-start">
-                <span className="w-6 h-0.5 bg-sky-500"></span>
-                Summary Statement
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Personal Profile</h2>
+            {/* Summary Statement Badge */}
+            <div className="flex items-center gap-2 text-sky-400 font-semibold tracking-wider text-xs uppercase mb-2 justify-center lg:justify-start">
+              <span className="w-6 h-0.5 bg-sky-500"></span>
+              Summary Statement
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">

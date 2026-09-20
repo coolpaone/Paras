@@ -17,7 +17,7 @@ export default function About() {
   };
 
   return (
-    <section className="py-20 bg-slate-900 border-y border-slate-800/80" id="about">
+    <section className="py-20 bg-slate-900 border-y border-slate-800/80" id="statement">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Main Statement Card verbatim from CV */}

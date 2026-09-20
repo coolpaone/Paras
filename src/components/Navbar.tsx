@@ -5,13 +5,13 @@ import { profileData } from '../data/cvData';
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState('about');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = ['hero', 'about', 'gallery', 'experience', 'expertise', 'languages', 'contact'];
+      const sections = ['about', 'gallery', 'experience', 'expertise', 'languages', 'contact'];
       const scrollPosition = window.scrollY + 120;
 
       for (const sectionId of sections) {
@@ -32,7 +32,7 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: 'Profile', href: '#about', id: 'about' },
+    { label: 'About', href: '#about', id: 'about' },
     { label: 'Assets', href: '#gallery', id: 'gallery' },
     { label: 'Experience', href: '#experience', id: 'experience' },
     { label: 'Expertise', href: '#expertise', id: 'expertise' },
@@ -59,10 +59,10 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Identity / Brand */}
         <a
-          href="#hero"
+          href="#about"
           onClick={(e) => {
             e.preventDefault();
-            handleNavClick('#hero');
+            handleNavClick('#about');
           }}
           className="flex items-center gap-3 group"
           id="nav-brand-link"
