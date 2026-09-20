@@ -33,7 +33,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: 'Profile', href: '#about', id: 'about' },
-    { label: 'Media Assets', href: '#gallery', id: 'gallery' },
+    { label: 'Assets', href: '#gallery', id: 'gallery' },
     { label: 'Experience', href: '#experience', id: 'experience' },
     { label: 'Expertise', href: '#expertise', id: 'expertise' },
     { label: 'Languages', href: '#languages', id: 'languages' },

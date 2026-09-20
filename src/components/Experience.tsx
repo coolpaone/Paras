@@ -71,22 +71,38 @@ export default function Experience() {
                   <div className="flex flex-col items-start sm:items-end gap-2 self-start sm:self-center">
                     {exp.id === 'exp-berkeley' && (
                       <div className="mb-0.5">
-                        <img
-                          src="/berkeley-logo.png"
-                          alt="Berkeley Services - Defined by Trust"
-                          className="h-8 sm:h-9 w-auto object-contain max-w-[160px]"
-                          referrerPolicy="no-referrer"
-                        />
+                        <a
+                          href="https://www.berkeleyuae.com/services/security"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Visit Berkeley Services Security (Opens in new window)"
+                          className="inline-block transition-all duration-200 hover:scale-105 hover:brightness-110 cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky-400 rounded-md p-1 -m-1 group/logo"
+                        >
+                          <img
+                            src="/berkeley-logo.png"
+                            alt="Berkeley Services - Defined by Trust"
+                            className="h-8 sm:h-9 w-auto object-contain max-w-[160px] transition-transform duration-200 group-hover/logo:scale-105"
+                            referrerPolicy="no-referrer"
+                          />
+                        </a>
                       </div>
                     )}
                     {exp.id === 'exp-citizen' && (
                       <div className="mb-0.5">
-                        <img
-                          src="/citizen-logo.png"
-                          alt="Citizen Security Services Pvt Ltd"
-                          className="h-10 sm:h-11 w-auto object-contain max-w-[140px] sm:-translate-x-12"
-                          referrerPolicy="no-referrer"
-                        />
+                        <a
+                          href="https://www.citizengroup.ae/security"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Visit Citizen Security Services (Opens in new window)"
+                          className="inline-block sm:-translate-x-12 transition-all duration-200 hover:scale-105 hover:brightness-110 cursor-pointer focus:outline-none focus:ring-2 focus:ring-sky-400 rounded-md p-1 -m-1 group/logo"
+                        >
+                          <img
+                            src="/citizen-logo.png"
+                            alt="Citizen Security Services Pvt Ltd"
+                            className="h-10 sm:h-11 w-auto object-contain max-w-[140px] transition-transform duration-200 group-hover/logo:scale-105"
+                            referrerPolicy="no-referrer"
+                          />
+                        </a>
                       </div>
                     )}
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-slate-800 text-slate-200 text-sm font-semibold font-mono border border-slate-700/50">
