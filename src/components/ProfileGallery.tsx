@@ -165,22 +165,9 @@ export default function ProfileGallery({ onSelectPhoto, photos = profileData.pho
                       className={`w-full h-full object-cover ${objectPositionClass}`}
                     />
 
-                    {/* Gradient bottom overlay for subtle contrast */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
-
                     {/* iPhone-style photo counter pill */}
                     <div className="absolute top-3.5 right-3.5 px-2.5 py-1 rounded-full bg-slate-950/75 backdrop-blur-md border border-white/10 text-[11px] font-medium text-slate-200 shadow-md pointer-events-none">
                       {index + 1} / {visiblePhotos.length}
-                    </div>
-
-                    {/* Photo title and tap hint */}
-                    <div className="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between text-xs text-slate-300 pointer-events-none">
-                      <span className="font-medium text-white truncate max-w-[200px]">
-                        {photo.title || 'Paras Nepali'}
-                      </span>
-                      <span className="text-[11px] text-sky-400 bg-sky-950/70 px-2 py-0.5 rounded-full border border-sky-500/30">
-                        Tap to view
-                      </span>
                     </div>
                   </div>
                 </div>
@@ -226,10 +213,6 @@ export default function ProfileGallery({ onSelectPhoto, photos = profileData.pho
               />
             ))}
           </div>
-
-          <p className="text-center text-[11px] text-slate-400 mt-2">
-            Swipe horizontally to browse photos
-          </p>
         </div>
       </div>
     </section>
