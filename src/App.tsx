@@ -9,6 +9,7 @@ import Languages from './components/Languages';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import PhotoLightboxModal from './components/PhotoLightboxModal';
+import FadeInSection from './components/FadeInSection';
 import { profileData } from './data/cvData';
 import { ProfilePhoto } from './types';
 
@@ -30,22 +31,44 @@ export default function App() {
       {/* Navigation */}
       <Navbar />
 
-      {/* Main Content Sections */}
+      {/* Main Content Sections with Intersection Observer Scroll Animations */}
       <main className="flex-1">
-        <Hero />
-        <About />
-        <ProfileGallery
-          photos={profileData.photos}
-          onSelectPhoto={(photo) => setSelectedPhoto(photo)}
-        />
-        <Experience />
-        <Expertise />
-        <Languages />
-        <Contact />
+        <FadeInSection threshold={0}>
+          <Hero />
+        </FadeInSection>
+
+        <FadeInSection threshold={0.08}>
+          <About />
+        </FadeInSection>
+
+        <FadeInSection threshold={0.08}>
+          <ProfileGallery
+            photos={profileData.photos}
+            onSelectPhoto={(photo) => setSelectedPhoto(photo)}
+          />
+        </FadeInSection>
+
+        <FadeInSection threshold={0.08}>
+          <Experience />
+        </FadeInSection>
+
+        <FadeInSection threshold={0.08}>
+          <Expertise />
+        </FadeInSection>
+
+        <FadeInSection threshold={0.08}>
+          <Languages />
+        </FadeInSection>
+
+        <FadeInSection threshold={0.08}>
+          <Contact />
+        </FadeInSection>
       </main>
 
       {/* Footer */}
-      <Footer />
+      <FadeInSection threshold={0.05}>
+        <Footer />
+      </FadeInSection>
 
       {/* Fullscreen Photo Lightbox Modal for gallery viewing */}
       <PhotoLightboxModal

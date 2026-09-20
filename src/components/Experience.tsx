@@ -37,7 +37,7 @@ export default function Experience() {
             >
               {/* Timeline Node */}
               <div className="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-950 border-2 border-sky-500 flex items-center justify-center text-sky-400 shadow-md shadow-sky-500/30 group-hover:scale-110 transition-transform">
-                <span className="w-2.5 h-2.5 rounded-full bg-sky-400"></span>
+                <span className={`w-2.5 h-2.5 rounded-full bg-sky-400 ${exp.isCurrent ? 'animate-slow-blink shadow-sm shadow-sky-400' : ''}`} />
               </div>
 
               {/* Card Container */}
