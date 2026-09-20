@@ -19,21 +19,6 @@ export default function About() {
   return (
     <section className="py-20 bg-slate-900 border-y border-slate-800/80" id="about">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5, ease: [0.2, 0.8, 0.2, 1] }}
-          className="max-w-3xl mb-12"
-        >
-          <div className="flex items-center gap-2 text-sky-400 font-semibold tracking-wider text-xs uppercase mb-2">
-            <span className="w-6 h-0.5 bg-sky-500"></span>
-            Summary Statement
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Personal Profile</h2>
-        </motion.div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Main Statement Card verbatim from CV */}
           <motion.div

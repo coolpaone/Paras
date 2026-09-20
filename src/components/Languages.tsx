@@ -20,7 +20,7 @@ export default function Languages() {
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Languages</h2>
           <p className="text-slate-400 text-sm sm:text-base mt-2">
-            Fluent multi-language proficiency enabling seamless communication with multicultural teams and multinational guests in the UAE.
+            Fluent multi-language proficiency enabling seamless communication with multicultural teams and multinational guests.
           </p>
         </motion.div>
 

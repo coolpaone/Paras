@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Maximize2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { profileData } from '../data/cvData';
 import { ProfilePhoto } from '../types';
@@ -103,24 +102,6 @@ export default function ProfileGallery({ onSelectPhoto, photos = profileData.pho
                   onError={() => handleImageError(photo)}
                   className={`w-full h-full object-cover ${objectPositionClass} group-hover:scale-105 transition-transform duration-500 ease-out`}
                 />
-
-                {/* Refined gradient overlay for clear contrast & readability */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent opacity-70 group-hover:opacity-95 transition-opacity duration-300 pointer-events-none" />
-
-                {/* Bottom information and expand badge */}
-                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 flex items-end justify-between z-10 pointer-events-none">
-                  <div className="min-w-0 pr-2">
-                    <span className="text-[11px] font-semibold text-sky-400 uppercase tracking-wider block mb-1 font-mono">
-                      {photo.category}
-                    </span>
-                    <p className="text-white font-medium text-xs sm:text-sm line-clamp-2 leading-snug drop-shadow-sm">
-                      {photo.description || photo.title}
-                    </p>
-                  </div>
-                  <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-900/80 backdrop-blur-md text-sky-400 border border-slate-700/80 flex items-center justify-center shadow-lg group-hover:bg-sky-500 group-hover:text-white transition-all flex-shrink-0">
-                    <Maximize2 className="w-4 h-4" />
-                  </span>
-                </div>
               </div>
             );
           })}

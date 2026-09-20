@@ -37,6 +37,15 @@ export default function Hero() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 space-y-6 text-center lg:text-left"
           >
+            {/* Summary Statement & Personal Profile Header */}
+            <div>
+              <div className="flex items-center gap-2 text-sky-400 font-semibold tracking-wider text-xs uppercase mb-2 justify-center lg:justify-start">
+                <span className="w-6 h-0.5 bg-sky-500"></span>
+                Summary Statement
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">Personal Profile</h2>
+            </div>
+
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
               {profileData.name}
               <span className="block text-2xl sm:text-3xl lg:text-4xl font-semibold text-sky-400 mt-2">
