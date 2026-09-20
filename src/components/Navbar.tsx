@@ -126,7 +126,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <nav className="hidden md:flex items-center md:gap-3.5 lg:gap-7 md:text-xs lg:text-sm font-medium text-slate-300">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
@@ -137,7 +137,7 @@ export default function Navbar() {
                   e.preventDefault();
                   handleNavClick(link.href, link.id);
                 }}
-                className={`transition-colors py-1 relative ${
+                className={`transition-colors py-1 relative whitespace-nowrap ${
                   isActive ? 'text-sky-400 font-semibold' : 'text-slate-300 hover:text-white'
                 }`}
                 id={`nav-link-${link.id}`}
@@ -156,16 +156,16 @@ export default function Navbar() {
         </nav>
 
         {/* Actions */}
-        <div className="hidden sm:flex items-center gap-3">
+        <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
           <button
             type="button"
             onClick={() => {
               window.location.href = `mailto:${profileData.email}`;
             }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-xs sm:text-sm font-semibold transition-all duration-200 shadow-sm shadow-sky-600/40 hover:shadow-md hover:shadow-sky-500/50 cursor-pointer"
+            className="inline-flex items-center justify-center whitespace-nowrap flex-shrink-0 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold transition-all duration-200 shadow-sm shadow-sky-600/40 hover:shadow-md hover:shadow-sky-500/50 cursor-pointer sm:max-lg:px-3 sm:max-lg:py-1.5 sm:max-lg:text-xs sm:max-lg:gap-1.5 lg:px-4 lg:py-2 lg:text-sm lg:gap-2"
             id="nav-email-btn"
           >
-            <Mail className="w-4 h-4" />
+            <Mail className="w-3.5 h-3.5 lg:w-4 lg:h-4 flex-shrink-0" />
             <span>Email Paras</span>
           </button>
         </div>
