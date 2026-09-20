@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { motion } from 'motion/react';
 import { Mail, Menu, X, Shield, ArrowUpRight } from 'lucide-react';
 import { profileData } from '../data/cvData';
 
@@ -6,29 +7,51 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
+  const isClickScrollingRef = useRef(false);
+  const clickTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      const sections = ['about', 'gallery', 'experience', 'expertise', 'languages', 'contact'];
-      const scrollPosition = window.scrollY + 120;
+      // Skip scroll-spy update while programmatic smooth scrolling from a click is underway
+      if (isClickScrollingRef.current) {
+        return;
+      }
 
-      for (const sectionId of sections) {
+      // If reached near bottom of page, activate last section (Contact)
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+        setActiveSection('contact');
+        return;
+      }
+
+      const sectionIds = ['about', 'gallery', 'experience', 'expertise', 'languages', 'contact'];
+      const navOffset = 120;
+      let currentSection = 'about';
+
+      for (const sectionId of sectionIds) {
         const el = document.getElementById(sectionId);
         if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(sectionId);
-            break;
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= navOffset) {
+            currentSection = sectionId;
           }
         }
       }
+
+      setActiveSection(currentSection);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Run once on mount to establish initial active section
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (clickTimeoutRef.current) {
+        clearTimeout(clickTimeoutRef.current);
+      }
+    };
   }, []);
 
   const navLinks = [
@@ -40,11 +63,28 @@ export default function Navbar() {
     { label: 'Contact', href: '#contact', id: 'contact' },
   ];
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (href: string, id: string) => {
     setMobileMenuOpen(false);
+    setActiveSection(id);
+    isClickScrollingRef.current = true;
+
+    if (clickTimeoutRef.current) {
+      clearTimeout(clickTimeoutRef.current);
+    }
+    // Lock scroll-spy briefly so smooth scrolling doesn't flicker intermediate links
+    clickTimeoutRef.current = window.setTimeout(() => {
+      isClickScrollingRef.current = false;
+    }, 850);
+
     const target = document.querySelector(href);
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+      const navHeight = 72;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - navHeight;
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -62,7 +102,7 @@ export default function Navbar() {
           href="#about"
           onClick={(e) => {
             e.preventDefault();
-            handleNavClick('#about');
+            handleNavClick('#about', 'about');
           }}
           className="flex items-center gap-3 group"
           id="nav-brand-link"
@@ -95,7 +135,7 @@ export default function Navbar() {
                 href={link.href}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleNavClick(link.href);
+                  handleNavClick(link.href, link.id);
                 }}
                 className={`transition-colors py-1 relative ${
                   isActive ? 'text-sky-400 font-semibold' : 'text-slate-300 hover:text-white'
@@ -104,7 +144,11 @@ export default function Navbar() {
               >
                 {link.label}
                 {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-sky-400 rounded-full" />
+                  <motion.span
+                    layoutId="activeNavUnderline"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-sky-400 rounded-full"
+                    transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                  />
                 )}
               </a>
             );
@@ -150,7 +194,7 @@ export default function Navbar() {
                 href={link.href}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleNavClick(link.href);
+                  handleNavClick(link.href, link.id);
                 }}
                 className={`px-3 py-2 rounded-lg text-sm font-medium ${
                   activeSection === link.id
